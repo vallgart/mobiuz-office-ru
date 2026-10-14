@@ -71,6 +71,10 @@
 
 /* карточки */
 #mbz-offices .mbz__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:16px}
+#mbz-offices .mbz-group{margin:0 0 34px}
+#mbz-offices .mbz-group:last-child{margin-bottom:0}
+#mbz-offices .mbz-group__t{margin:0 0 14px;padding:0;font-size:24px;line-height:1.25;font-weight:700;color:var(--mbz-ink);display:flex;align-items:baseline;gap:10px}
+#mbz-offices .mbz-group__t small{font-size:14px;font-weight:500;color:var(--mbz-muted)}
 #mbz-offices .mbz-card{display:flex;flex-direction:column;gap:12px;padding:18px;background:#fff;border:1px solid var(--mbz-line);border-radius:18px;transition:box-shadow .2s,transform .2s,border-color .2s}
 #mbz-offices .mbz-card:hover{box-shadow:0 10px 28px rgba(20,28,45,.10);transform:translateY(-2px);border-color:#d9dce4}
 #mbz-offices .mbz-card__name{margin:0;font-size:18px;line-height:1.25;font-weight:700}
@@ -129,6 +133,7 @@
 /* Телефоны (до ~720px) */
 @container mbz (max-width:720px){
   #mbz-offices .mbz__title{font-size:22px}
+  #mbz-offices .mbz-group__t{font-size:20px}
   #mbz-offices .mbz__lead{font-size:14px}
   #mbz-offices .mbz__print{display:none}
   #mbz-offices .mbz__bar{padding:12px;border-radius:14px}
@@ -1121,7 +1126,21 @@
   function render() {
     var n = now(), tokens = norm(state.q).split(/\s+/).filter(Boolean);
     var list = D.filter(function (o) { return match(o, n, tokens); });
-    $('mbz-list').innerHTML = list.map(function (o) { return card(o, n); }).join('');
+    var box = $('mbz-list');
+    if (isDefault()) {
+      // без фильтров — карточки сгруппированы по регионам, у каждой группы заголовок H2
+      box.className = 'mbz__groups';
+      box.innerHTML = regions.map(function (r) {
+        var items = list.filter(function (o) { return o.r === r; });
+        if (!items.length) return '';
+        return '<section class="mbz-group"><h2 class="mbz-group__t">' + esc(r) + ' <small>' + items.length + '</small></h2>' +
+               '<div class="mbz__grid">' + items.map(function (o) { return card(o, n); }).join('') + '</div></section>';
+      }).join('');
+    } else {
+      // с фильтрами или поиском — один общий список результатов
+      box.className = 'mbz__grid';
+      box.innerHTML = list.map(function (o) { return card(o, n); }).join('');
+    }
     $('mbz-empty').hidden = list.length > 0;
     $('mbz-count').textContent = 'Показано ' + list.length + ' из ' + D.length;
     $('mbz-reset').hidden = isDefault();
