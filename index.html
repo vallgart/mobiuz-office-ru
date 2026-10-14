@@ -105,6 +105,15 @@
 
 #mbz-offices .mbz__error{padding:16px 18px;margin-bottom:14px;border:1px solid #f3b8b3;border-radius:14px;background:var(--mbz-red-soft);color:var(--mbz-closed);font-size:14px;line-height:1.5}
 #mbz-offices .mbz__error code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:5px}
+#mbz-offices .mbz-card--closed{background:#fcfcfd;border-color:#f0cfcc}
+#mbz-offices .mbz-closed{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--mbz-closed-bg);color:var(--mbz-closed)}
+#mbz-offices .mbz-closed--date{background:var(--mbz-amber-bg);color:var(--mbz-amber)}
+#mbz-offices .mbz-closed svg{margin-top:1px;width:20px;height:20px}
+#mbz-offices .mbz-closed b{display:block;font-size:15px;font-weight:700;line-height:1.3}
+#mbz-offices .mbz-closed span{display:block;margin-top:3px;font-size:14px;font-weight:600}
+#mbz-offices .mbz-closed span.mbz-closed__n{font-weight:400;color:var(--mbz-ink);opacity:.8;font-size:13.5px}
+#mbz-offices .mbz-card--closed .mbz-sched ul{opacity:.65}
+#mbz-offices .mbz-card--closed .mbz-sched .mbz-h{color:var(--mbz-muted)}
 #mbz-offices .mbz__empty{text-align:center;padding:56px 16px;border:1px dashed var(--mbz-line);border-radius:18px;background:var(--mbz-bg)}
 #mbz-offices .mbz__empty h3{margin:0 0 6px;font-size:18px}
 #mbz-offices .mbz__empty p{margin:0 0 16px;color:var(--mbz-muted)}
@@ -212,6 +221,12 @@
                 hours  "09:00-18:00" либо "выходной"
                 lunch  перерыв "13:00-14:00" или "" (нет)
               Дни, которые не указаны, считаются выходными. Круглосуточно/до полуночи: "10:00-24:00".
+    closed    ВРЕМЕННОЕ ЗАКРЫТИЕ (необязательное поле; если его нет — офис работает как обычно). Добавьте в офис строку:
+                "closed": { "reopen": "15.11.2026", "note": "Идёт ремонт помещения" }
+              reopen — дата открытия (ДД.ММ.ГГГГ или ГГГГ-ММ-ДД); если дата неизвестна — "" (карточка покажет «Дата открытия пока не определена»);
+              note — пояснение для клиентов (необязательно, можно "").
+              Закрытый офис всегда остаётся в списке: его не скрывают переключатели «Открыто сейчас» и «Работает в воскресенье»
+              (область, город и поиск работают как обычно). В день, указанный в reopen, офис сам возвращается к обычному режиму.
 
   Правила JSON: все тексты в двойных кавычках "…"; после каждого поля и блока — запятая, КРОМЕ последнего в списке;
   внутри текста вместо двойных кавычек используйте «ёлочки». Если ошибиться, на странице появится сообщение с описанием ошибки.
@@ -241,6 +256,7 @@
     "landmark": "",
     "uzkad": "1726277023",
     "map": "",
+    "closed": { "reopen": "15.11.2026", "note": "" },
     "schedule": [
       { "days": "пн-вс", "hours": "08:00-20:00", "lunch": "" }
     ]
@@ -254,6 +270,7 @@
     "landmark": "ТРЦ Tashkent City Mall",
     "uzkad": "1726277022",
     "map": "",
+    "closed": { "reopen": "", "note": "" },
     "schedule": [
       { "days": "пн-чт", "hours": "10:00-23:00", "lunch": "" },
       { "days": "пт-вс", "hours": "10:00-24:00", "lunch": "" }
@@ -876,15 +893,27 @@
   var norm = function (s) { return String(s).toLowerCase().replace(/ё/g, 'е').replace(/[«»"“”'’`]/g, ''); };
 
   function now() {
-    var p = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+    var p = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
     var g = function (t) { return p.filter(function (x) { return x.type === t; })[0].value; };
-    return { d: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(g('weekday')), t: (+g('hour')) * 60 + (+g('minute')) };
+    return { d: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(g('weekday')), t: (+g('hour')) * 60 + (+g('minute')), date: g('year') + '-' + g('month') + '-' + g('day') };
   }
   function span(s) { var a = s.split('-'); return [toMin(a[0]), toMin(a[1])]; }
   function toMin(s) { var a = s.split(':'); return (+a[0]) * 60 + (+a[1]); }
   function fmt(m) { var h = Math.floor(m / 60), mm = m % 60; return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm; }
   function lunchOf(o, d) { return Array.isArray(o.l) ? o.l[d] : (o.l || null); }
   function range(s) { return s.replace('-', '–'); }
+
+  var MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  function dateRu(iso, n) {
+    var p = iso.split('-'), y = +p[0];
+    return (+p[2]) + ' ' + MONTHS[+p[1] - 1] + (y !== +n.date.slice(0, 4) ? ' ' + y + ' г.' : '');
+  }
+  // временное закрытие: null — офис работает (нет поля closed либо дата открытия уже наступила)
+  function closure(o, n) {
+    if (!o.cl) return null;
+    if (o.cl.reopen && n.date >= o.cl.reopen) return null;
+    return o.cl;
+  }
 
   function status(o, n) {
     if (!o.ok) return { k: 'unknown', pill: '', note: '' };
@@ -947,6 +976,16 @@
     var tag = '«' + (o.n || 'офис №' + (i + 1)) + '»';
     if (!o.n || !o.r || !o.a) problems.push(tag + ': заполните name, region и address');
     if (!o.c) o.c = o.r;
+    if (r.closed) {
+      var cl = r.closed === true ? {} : r.closed, re = s(cl.reopen), iso = '';
+      if (re) {
+        var m1 = /^(\d{4})-(\d{2})-(\d{2})$/.exec(re), m2 = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(re);
+        if (m1) iso = re;
+        else if (m2) iso = m2[3] + '-' + ('0' + m2[2]).slice(-2) + '-' + ('0' + m2[1]).slice(-2);
+        else problems.push(tag + ': дату открытия (reopen) пишите так: 15.11.2026');
+      }
+      o.cl = { reopen: iso, note: s(cl.note) };
+    }
     try {
       if (!Array.isArray(r.schedule) || !r.schedule.length) throw new Error('не заполнено расписание (schedule)');
       r.schedule.forEach(function (g) {
@@ -1012,6 +1051,7 @@
   var I = {
     pin: '<svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
     clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    pause: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg>',
     route: '<svg viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-8-8-2z"/></svg>'
   };
 
@@ -1019,6 +1059,7 @@
   function card(o, n) {
     var st = status(o, n), day = o.w[n.d], lu = lunchOf(o, n.d);
     var today = !o.ok ? 'Режим работы уточняется' : day ? 'Сегодня ' + range(day) + (lu ? ' · обед ' + range(lu) : '') : 'Сегодня выходной';
+    var cl = closure(o, n);
     var q = o.map || ((o.r === TSH ? 'г. Ташкент' : o.r) + ', ' + o.a);
     var href = /^https?:\/\//i.test(q) ? q : 'https://yandex.com/maps/?text=' + encodeURIComponent(q);
     var sched = groups(o).map(function (g) {
@@ -1027,12 +1068,16 @@
       var act = n.d >= g.from && n.d <= g.to ? ' class="is-today"' : '';
       return '<li' + act + '><span>' + label + '</span><span>' + val + '</span></li>';
     }).join('');
-    return '<article class="mbz-card" data-id="' + o.id + '">' +
+    var banner = cl ? '<div class="mbz-closed' + (cl.reopen ? ' mbz-closed--date' : '') + '">' + I.pause + '<div><b>Временно закрыт</b>' +
+        '<span>' + (cl.reopen ? 'Откроется ' + esc(dateRu(cl.reopen, n)) : 'Дата открытия пока не определена') + '</span>' +
+        (cl.note ? '<span class="mbz-closed__n">' + esc(cl.note) + '</span>' : '') + '</div></div>' : '';
+    return '<article class="mbz-card' + (cl ? ' mbz-card--closed' : '') + '" data-id="' + o.id + '">' +
       '<h3 class="mbz-card__name">' + esc(o.n) + '</h3>' +
       '<div class="mbz-line">' + I.pin + '<div>' + esc(o.a) + (o.lm ? '<em>' + esc(o.lm) + '</em>' : '') + '</div></div>' +
-      '<div class="mbz-line">' + I.clock + '<div><b>' + esc(today) + '</b>' + (st.note ? '<em class="mbz-st mbz-st--' + st.k + '">' + esc(st.note) + '</em>' : '') + '</div></div>' +
+      (cl ? banner : '') +
+      (cl ? '' : '<div class="mbz-line">' + I.clock + '<div><b>' + esc(today) + '</b>' + (st.note ? '<em class="mbz-st mbz-st--' + st.k + '">' + esc(st.note) + '</em>' : '') + '</div></div>') +
       (o.k ? '<div class="mbz-code">Код УзКад <b>' + esc(o.k) + '</b></div>' : '') +
-      (o.ok ? '<div class="mbz-sched"><div class="mbz-sched__t">Расписание на неделю</div><ul>' + sched + '</ul></div>' : '') +
+      (o.ok ? '<div class="mbz-sched"><div class="mbz-sched__t">' + (cl ? 'Обычный режим работы' : 'Расписание на неделю') + '</div><ul>' + sched + '</ul></div>' : '') +
       '<div class="mbz-actions">' +
         '<a class="mbz-btn mbz-btn--main" target="_blank" rel="noopener" href="' + esc(href) + '">' + I.route + 'Локация</a>' +
       '</div></article>';
@@ -1041,8 +1086,10 @@
   function match(o, n, tokens) {
     if (state.region !== 'all' && o.r !== state.region) return false;
     if (state.city !== 'all' && o.c !== state.city) return false;
-    if (state.sun && !o.w[6]) return false;
-    if (state.open && status(o, n).k !== 'open') return false;
+    if (!closure(o, n)) {   // временно закрытые офисы не отфильтровываются переключателями — пользователь должен их видеть
+      if (state.sun && !o.w[6]) return false;
+      if (state.open && status(o, n).k !== 'open') return false;
+    }
     for (var i = 0; i < tokens.length; i++) if (o.hay.indexOf(tokens[i]) < 0) return false;
     return true;
   }
