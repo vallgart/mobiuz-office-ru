@@ -214,7 +214,7 @@
   Поля:
     active    true — показывать, false — скрыть офис (удалять не нужно)
     name      название карточки
-    region    область (так же пишется во всех офисах области; для Ташкента — «Ташкент»). Порядок областей в списке = порядок первых офисов
+    region    область (так же пишется во всех офисах области; для Ташкента — «Ташкент»). Порядок регионов на странице задаётся автоматически: Ташкент, Ташкентская область, остальные по алфавиту
     city      город — для списка «Город»
     address   адрес
     landmark  ориентир (необязательно, можно "")
@@ -1026,6 +1026,13 @@
   var state = { q: '', region: 'all', city: 'all', open: false, sun: false };
   var regions = [];
   D.forEach(function (o) { if (regions.indexOf(o.r) < 0) regions.push(o.r); });
+  // порядок регионов: Ташкент, Ташкентская область, затем остальные по алфавиту
+  var REGION_FIRST = ['Ташкент', 'Ташкентская область'];
+  regions.sort(function (a, b) {
+    var ia = REGION_FIRST.indexOf(a), ib = REGION_FIRST.indexOf(b);
+    if (ia >= 0 || ib >= 0) return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    return a.localeCompare(b, 'ru');
+  });
   D.forEach(function (o) { o.hay = norm([o.n, o.r, o.a, o.lm, o.k].join(' ')); });
 
   function readHash() {
