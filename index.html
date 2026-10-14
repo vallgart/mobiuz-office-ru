@@ -38,8 +38,6 @@
 #mbz-offices .mbz__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}
 #mbz-offices .mbz__title{margin:0 0 6px;font-size:28px;line-height:1.2;font-weight:700}
 #mbz-offices .mbz__lead{margin:0;color:var(--mbz-muted);max-width:720px}
-#mbz-offices .mbz__print{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:9px 14px;border:1px solid var(--mbz-line);border-radius:10px;background:#fff;color:var(--mbz-ink);transition:.15s}
-#mbz-offices .mbz__print:hover{border-color:var(--mbz-red);color:var(--mbz-red)}
 
 /* панель фильтров */
 #mbz-offices .mbz__bar{position:sticky;top:0;z-index:5;background:#fff;border:1px solid var(--mbz-line);border-radius:16px;padding:14px;box-shadow:0 6px 20px rgba(20,28,45,.06);margin-bottom:14px}
@@ -54,7 +52,7 @@
 #mbz-offices .mbz__clear svg{position:static;transform:none;width:16px;height:16px}
 
 
-#mbz-offices .mbz__sel{flex:0 1 220px;min-width:170px;height:46px;padding:0 38px 0 14px;border:1px solid var(--mbz-line);border-radius:12px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%236b7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 14px center;-webkit-appearance:none;appearance:none;font:inherit;color:inherit;cursor:pointer;outline:none;transition:.15s;text-overflow:ellipsis}
+#mbz-offices .mbz__sel{flex:0 0 280px;min-width:170px;max-width:100%;height:46px;padding:0 38px 0 14px;border:1px solid var(--mbz-line);border-radius:12px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%236b7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 14px center;-webkit-appearance:none;appearance:none;font:inherit;color:inherit;cursor:pointer;outline:none;transition:.15s;text-overflow:ellipsis}
 #mbz-offices .mbz__sel:hover{border-color:#cfd3db}
 #mbz-offices .mbz__sel:focus{border-color:var(--mbz-red);box-shadow:0 0 0 3px rgba(226,35,26,.12)}
 #mbz-offices .mbz__tgl{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 14px;border:1px solid var(--mbz-line);border-radius:12px;background:#fff;color:var(--mbz-ink);transition:.15s}
@@ -88,7 +86,7 @@
 #mbz-offices .mbz-st--lunch{color:var(--mbz-amber)!important}
 #mbz-offices .mbz-st--closed{color:var(--mbz-closed)!important}
 
-#mbz-offices .mbz-code{font-size:13px;color:var(--mbz-muted)}
+#mbz-offices .mbz-code{color:var(--mbz-muted);white-space:nowrap}
 #mbz-offices .mbz-code b{color:var(--mbz-ink);font-weight:600;letter-spacing:.02em;user-select:all}
 #mbz-offices .mbz-sched{border-top:1px dashed var(--mbz-line);padding-top:10px}
 #mbz-offices .mbz-sched__t{color:var(--mbz-muted);font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
@@ -135,7 +133,6 @@
   #mbz-offices .mbz__title{font-size:22px}
   #mbz-offices .mbz-group__t{font-size:20px}
   #mbz-offices .mbz__lead{font-size:14px}
-  #mbz-offices .mbz__print{display:none}
   #mbz-offices .mbz__bar{padding:12px;border-radius:14px}
   #mbz-offices .mbz__row>*{flex:1 1 100%;min-width:0}
   #mbz-offices .mbz__tgl{justify-content:space-between}
@@ -151,14 +148,13 @@
   }
   @media (max-width:720px){
     #mbz-offices .mbz__title{font-size:22px}
-    #mbz-offices .mbz__print{display:none}
     #mbz-offices .mbz__row>*{flex:1 1 100%;min-width:0}
     #mbz-offices .mbz__tgl{justify-content:space-between}
     #mbz-offices .mbz__grid{grid-template-columns:1fr}
   }
 }
 @media print{
-  #mbz-offices .mbz__bar,#mbz-offices .mbz__print,#mbz-offices .mbz-actions,#mbz-offices .mbz__reset,#mbz-offices .mbz-st{display:none!important}
+  #mbz-offices .mbz__bar,#mbz-offices .mbz-actions,#mbz-offices .mbz__reset,#mbz-offices .mbz-st{display:none!important}
   #mbz-offices .mbz__grid{grid-template-columns:1fr 1fr;gap:10px}
   #mbz-offices .mbz-card{break-inside:avoid;box-shadow:none!important;transform:none!important;padding:12px}
 }
@@ -173,10 +169,6 @@
       <h2 class="mbz__title" id="mbz-title">Офисы и Центры обслуживания Mobiuz</h2>
       <p class="mbz__lead">Подключение к сети, выбор тарифа и оформление договора, консультации по услугам, начислениям и детализации счёта.</p>
     </div>
-    <button class="mbz__print" type="button" id="mbz-print">
-      <svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg>
-      Версия для печати
-    </button>
   </div>
 
   <div class="mbz__bar">
@@ -187,7 +179,6 @@
         <button class="mbz__clear" type="button" id="mbz-clear" aria-label="Очистить поиск"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       </label>
       <select class="mbz__sel" id="mbz-region" aria-label="Область"></select>
-      <select class="mbz__sel" id="mbz-city" aria-label="Город"></select>
       <button class="mbz__tgl" type="button" id="mbz-open" aria-pressed="false">Открыто сейчас <i></i></button>
       <button class="mbz__tgl" type="button" id="mbz-sun" aria-pressed="false">Работает в воскресенье <i></i></button>
     </div>
@@ -215,7 +206,6 @@
     active    true — показывать, false — скрыть офис (удалять не нужно)
     name      название карточки
     region    область (так же пишется во всех офисах области; для Ташкента — «Ташкент»). Порядок регионов на странице задаётся автоматически: Ташкент, Ташкентская область, остальные по алфавиту
-    city      город — для списка «Город»
     address   адрес
     landmark  ориентир (необязательно, можно "")
     uzkad     код УзКад ("" — строка в карточке не показывается)
@@ -243,7 +233,6 @@
     "active": true,
     "name": "Центр обслуживания №1",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Юнусабадский район, проспект Амира Темура, 24",
     "landmark": "",
     "uzkad": "1726266052",
@@ -256,7 +245,6 @@
     "active": true,
     "name": "Центр обслуживания №2",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Шайхонтохурский район, ул. Лабзак, 1а",
     "landmark": "",
     "uzkad": "1726277023",
@@ -270,7 +258,6 @@
     "active": true,
     "name": "ТРЦ Tashkent City Mall",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Шайхантахурский район, Алмазарская МСГ, ул. Батыра Закирова, 7",
     "landmark": "ТРЦ Tashkent City Mall",
     "uzkad": "1726277022",
@@ -285,7 +272,6 @@
     "active": true,
     "name": "Самарканд Дарвоза",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Шайхонтохурский район, ул. Коратош, 5А",
     "landmark": "ТРЦ Самарканд Дарвоза",
     "uzkad": "1726277045",
@@ -298,7 +284,6 @@
     "active": true,
     "name": "Мега Планет",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Юнусабадский район, 11 квартал, ул. Ахмад Дониш-2Б",
     "landmark": "ТРЦ Мега Планет, 1 этаж",
     "uzkad": "1726266003",
@@ -311,7 +296,6 @@
     "active": true,
     "name": "Мирзо-Улугбекский район",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Мирзо-Улугбекский район, ул. М. Юсуф, дом 68, кв. 62",
     "landmark": "Автостоянка, ул. Дагестанская",
     "uzkad": "1726269045",
@@ -324,7 +308,6 @@
     "active": true,
     "name": "Метро Чиланзар",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Чиланзарский район, 16 квартал, дом 15, кв. 65",
     "landmark": "Метро Чиланзар, торговые ряды",
     "uzkad": "1726294043",
@@ -337,7 +320,6 @@
     "active": true,
     "name": "Вузовский городок",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Алмазарский район, ул. Талабалар, 2",
     "landmark": "Вуз-городок",
     "uzkad": "1726280051",
@@ -350,7 +332,6 @@
     "active": true,
     "name": "ТРЦ Compass",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Бектемирский район, ТКАД, дом 17",
     "landmark": "ТРЦ Compass, рынок Куйлюк",
     "uzkad": "1726273039",
@@ -363,7 +344,6 @@
     "active": true,
     "name": "Рынок Универсам",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Юнусабадский район, пересечение улиц Амира Тимура и Ахмад Даниш, торговый ряд",
     "landmark": "Остановка на рынке Универсам",
     "uzkad": "1726266049",
@@ -376,7 +356,6 @@
     "active": true,
     "name": "Сергелийский район",
     "region": "Ташкент",
-    "city": "Ташкент",
     "address": "Сергелийский район, МСГ Мехригиё, квартал 6, дом 49а",
     "landmark": "Сергелийский дехканский рынок",
     "uzkad": "1726283003",
@@ -389,7 +368,6 @@
     "active": true,
     "name": "Андижан — Избоскан",
     "region": "Андижанская область",
-    "city": "Избоскан",
     "address": "Избосканский район, МСГ Алишер Навои, ул. Накшбандий, 155",
     "landmark": "",
     "uzkad": "",
@@ -402,7 +380,6 @@
     "active": true,
     "name": "Андижан — Эски шахар",
     "region": "Андижанская область",
-    "city": "Андижан",
     "address": "г. Андижан, проспект Мустакиллик (бывш. ул. Олтинкул), 5а",
     "landmark": "Территория Старого города, рядом с мед. центром «ZAM-ZAM Med Servis»",
     "uzkad": "1703401009",
@@ -415,7 +392,6 @@
     "active": true,
     "name": "Кургантепа",
     "region": "Андижанская область",
-    "city": "Кургантепа",
     "address": "Кургантепинский район, г. Кургантепа, Шахрихонсой МСГ, ул. Шифокор, 71",
     "landmark": "",
     "uzkad": "1703220071",
@@ -428,7 +404,6 @@
     "active": true,
     "name": "Андижан — ул. Бобуршох",
     "region": "Андижанская область",
-    "city": "Андижан",
     "address": "г. Андижан, ул. Бобуршох, 13в",
     "landmark": "Рядом с кафе «Iris»",
     "uzkad": "1703401042",
@@ -441,7 +416,6 @@
     "active": true,
     "name": "Андижан — ул. Ташкент",
     "region": "Андижанская область",
-    "city": "Андижан",
     "address": "г. Андижан, ул. Ташкент (бывш. ул. Семашко), 3",
     "landmark": "Рядом с кафе «Ruboiy»",
     "uzkad": "1703401077",
@@ -456,7 +430,6 @@
     "active": true,
     "name": "Асака",
     "region": "Андижанская область",
-    "city": "Асака",
     "address": "г. Асака, ул. Умид",
     "landmark": "Рядом с подземным переходом и аптекой «Gulnora Farm»",
     "uzkad": "1703224019",
@@ -469,7 +442,6 @@
     "active": true,
     "name": "Булокбоши",
     "region": "Андижанская область",
-    "city": "Булокбоши",
     "address": "Булокбашинский район, Булокбоши, МСГ М. Исмоилий, ул. Мирза Калом Исмоилий, 17",
     "landmark": "Рядом с аптекой «03», напротив парка культуры и отдыха",
     "uzkad": "1703210004",
@@ -482,7 +454,6 @@
     "active": true,
     "name": "Бухара — Центр обслуживания",
     "region": "Бухарская область",
-    "city": "Бухара",
     "address": "г. Бухара, ул. Хофиз Тониш Бухорий, 10",
     "landmark": "",
     "uzkad": "1706401024",
@@ -495,7 +466,6 @@
     "active": true,
     "name": "Бухара — ул. Ибн Сино",
     "region": "Бухарская область",
-    "city": "Бухара",
     "address": "г. Бухара, ул. Ибн Сино, 1",
     "landmark": "",
     "uzkad": "1706401016",
@@ -508,7 +478,6 @@
     "active": true,
     "name": "Гиждуван",
     "region": "Бухарская область",
-    "city": "Гиждуван",
     "address": "г. Гиждуван, ул. Ю. Хамадоний",
     "landmark": "",
     "uzkad": "1706215068",
@@ -521,7 +490,6 @@
     "active": true,
     "name": "Гулистан",
     "region": "Сырдарьинская область",
-    "city": "Гулистан",
     "address": "г. Гулистан, ул. Бирлашган, 68",
     "landmark": "",
     "uzkad": "1724401014",
@@ -534,7 +502,6 @@
     "active": true,
     "name": "Джизак — Центр обслуживания",
     "region": "Джизакская область",
-    "city": "Джизак",
     "address": "г. Джизак, махалля Сайлижой, проспект Ш. Рашидова",
     "landmark": "",
     "uzkad": "1708401028",
@@ -547,7 +514,6 @@
     "active": true,
     "name": "Джизак — ТЦ «Зебо»",
     "region": "Джизакская область",
-    "city": "Джизак",
     "address": "г. Джизак, проспект Ш. Рашидова",
     "landmark": "Территория ТЦ «Зебо»",
     "uzkad": "1708401031",
@@ -561,7 +527,6 @@
     "active": true,
     "name": "Карши — Центр обслуживания",
     "region": "Кашкадарьинская область",
-    "city": "Карши",
     "address": "г. Карши, ул. Ислама Каримова, 221",
     "landmark": "",
     "uzkad": "",
@@ -574,7 +539,6 @@
     "active": true,
     "name": "Карши — ул. Ислама Каримова",
     "region": "Кашкадарьинская область",
-    "city": "Карши",
     "address": "г. Карши, ул. Ислама Каримова, 254",
     "landmark": "",
     "uzkad": "",
@@ -587,7 +551,6 @@
     "active": true,
     "name": "Касан",
     "region": "Кашкадарьинская область",
-    "city": "Касан",
     "address": "Касанский район, Касан, МСГ Сарипул, проспект Мустакиллик, 14",
     "landmark": "Касан дехкон бозори",
     "uzkad": "",
@@ -601,7 +564,6 @@
     "active": true,
     "name": "Шахрисабз — Центр обслуживания",
     "region": "Кашкадарьинская область",
-    "city": "Шахрисабз",
     "address": "г. Китаб, ул. Буюк Ипак Йули, 1",
     "landmark": "",
     "uzkad": "1710232057",
@@ -615,7 +577,6 @@
     "active": true,
     "name": "Шахрисабз — супермаркет «Макро»",
     "region": "Кашкадарьинская область",
-    "city": "Шахрисабз",
     "address": "г. Шахрисабз, МФЙ «Хабарлик», ул. Ипак Йули",
     "landmark": "В здании супермаркета «Макро»",
     "uzkad": "1710405009",
@@ -629,7 +590,6 @@
     "active": true,
     "name": "Навои — Центр обслуживания",
     "region": "Навоийская область",
-    "city": "Навои",
     "address": "г. Навои, ул. Навои, 11",
     "landmark": "",
     "uzkad": "",
@@ -642,7 +602,6 @@
     "active": true,
     "name": "Зарафшан",
     "region": "Навоийская область",
-    "city": "Зарафшан",
     "address": "г. Зарафшан, ул. А. Тимура, 45",
     "landmark": "Подразделение Центра обслуживания в г. Навои",
     "uzkad": "1712408014",
@@ -656,7 +615,6 @@
     "active": true,
     "name": "Навои — МСГ Меъмор",
     "region": "Навоийская область",
-    "city": "Навои",
     "address": "г. Навои, МСГ Меъмор, 17 квартал, ул. Галаба, 10",
     "landmark": "",
     "uzkad": "1712401022",
@@ -669,7 +627,6 @@
     "active": true,
     "name": "Наманган",
     "region": "Наманганская область",
-    "city": "Наманган",
     "address": "г. Наманган, ул. Нодира, 1",
     "landmark": "",
     "uzkad": "1714401019",
@@ -684,7 +641,6 @@
     "active": true,
     "name": "Нукус",
     "region": "Каракалпакстан",
-    "city": "Нукус",
     "address": "г. Нукус, Турткульское шоссе, 138а",
     "landmark": "",
     "uzkad": "1735401051",
@@ -697,7 +653,6 @@
     "active": true,
     "name": "Самарканд — Центр обслуживания",
     "region": "Самаркандская область",
-    "city": "Самарканд",
     "address": "г. Самарканд, ул. Мирзо-Улугбека, 105",
     "landmark": "",
     "uzkad": "1718401124",
@@ -711,7 +666,6 @@
     "active": true,
     "name": "Самарканд — ул. Почта",
     "region": "Самаркандская область",
-    "city": "Самарканд",
     "address": "г. Самарканд, ул. Почта, 5",
     "landmark": "",
     "uzkad": "1718401023",
@@ -726,7 +680,6 @@
     "active": true,
     "name": "Термез",
     "region": "Сурхандарьинская область",
-    "city": "Термез",
     "address": "г. Термез, ул. Навбахор, 12А",
     "landmark": "",
     "uzkad": "1722401030",
@@ -740,7 +693,6 @@
     "active": true,
     "name": "Денау",
     "region": "Сурхандарьинская область",
-    "city": "Денау",
     "address": "г. Денау, ул. Ш. Рашидова, 238а",
     "landmark": "Подразделение Центра обслуживания в г. Термезе",
     "uzkad": "1722210036",
@@ -754,7 +706,6 @@
     "active": true,
     "name": "Ургенч",
     "region": "Хорезмская область",
-    "city": "Ургенч",
     "address": "г. Ургенч, ул. Аль-Хорезмий, 101",
     "landmark": "",
     "uzkad": "1733401033",
@@ -767,7 +718,6 @@
     "active": true,
     "name": "Фергана",
     "region": "Ферганская область",
-    "city": "Фергана",
     "address": "г. Фергана, ул. Сайилгох, 26",
     "landmark": "",
     "uzkad": "1730401055",
@@ -782,7 +732,6 @@
     "active": true,
     "name": "Маргилан",
     "region": "Ферганская область",
-    "city": "Маргилан",
     "address": "г. Маргилан, ул. Б. Маргилоний, 184-б",
     "landmark": "",
     "uzkad": "",
@@ -795,7 +744,6 @@
     "active": true,
     "name": "Коканд",
     "region": "Ферганская область",
-    "city": "Коканд",
     "address": "г. Коканд, ул. Богистон, 6а",
     "landmark": "Подразделение Центра обслуживания в г. Фергане",
     "uzkad": "1730405057",
@@ -808,7 +756,6 @@
     "active": true,
     "name": "Чирчик",
     "region": "Ташкентская область",
-    "city": "Чирчик",
     "address": "г. Чирчик, проспект Алишера Навои, 13",
     "landmark": "",
     "uzkad": "1727419007",
@@ -821,7 +768,6 @@
     "active": true,
     "name": "Бекабад",
     "region": "Ташкентская область",
-    "city": "Бекабад",
     "address": "г. Бекабад, МСГ Узбекистан, ул. Сырдарья, 630",
     "landmark": "Дехканский рынок г. Бекабад",
     "uzkad": "",
@@ -834,7 +780,6 @@
     "active": true,
     "name": "Алмалык",
     "region": "Ташкентская область",
-    "city": "Алмалык",
     "address": "г. Алмалык, ул. Олимпийская, 3",
     "landmark": "",
     "uzkad": "1727404009",
@@ -847,7 +792,6 @@
     "active": true,
     "name": "Ангрен",
     "region": "Ташкентская область",
-    "city": "Ангрен",
     "address": "г. Ангрен, ул. Алишера Навоий",
     "landmark": "Автостоянка напротив Angren Media Center",
     "uzkad": "1727407046",
@@ -860,7 +804,6 @@
     "active": true,
     "name": "Янгиюль",
     "region": "Ташкентская область",
-    "city": "Янгиюль",
     "address": "г. Янгиюль, ул. Ёшлик, 2",
     "landmark": "",
     "uzkad": "1727424018",
@@ -873,7 +816,6 @@
     "active": true,
     "name": "Чиназ",
     "region": "Ташкентская область",
-    "city": "Чиназ",
     "address": "Чиназский район, Кази МФЙ, ул. Самаркандская, 88",
     "landmark": "",
     "uzkad": "1727256039",
@@ -976,11 +918,10 @@
   }
   function build(r, i) {
     var s = function (v) { return v == null ? '' : String(v).trim(); };
-    var o = { id: i + 1, n: s(r.name), r: s(r.region), c: s(r.city), a: s(r.address), lm: s(r.landmark), k: s(r.uzkad), map: s(r.map),
+    var o = { id: i + 1, n: s(r.name), r: s(r.region), a: s(r.address), lm: s(r.landmark), k: s(r.uzkad), map: s(r.map),
               w: [null, null, null, null, null, null, null], l: [null, null, null, null, null, null, null], ok: true };
     var tag = '«' + (o.n || 'офис №' + (i + 1)) + '»';
     if (!o.n || !o.r || !o.a) problems.push(tag + ': заполните name, region и address');
-    if (!o.c) o.c = o.r;
     if (r.closed) {
       var cl = r.closed === true ? {} : r.closed, re = s(cl.reopen), iso = '';
       if (re) {
@@ -1023,7 +964,7 @@
   }
 
   /* ---------- Состояние ---------- */
-  var state = { q: '', region: 'all', city: 'all', open: false, sun: false };
+  var state = { q: '', region: 'all', open: false, sun: false };
   var regions = [];
   D.forEach(function (o) { if (regions.indexOf(o.r) < 0) regions.push(o.r); });
   // порядок регионов: Ташкент, Ташкентская область, затем остальные по алфавиту
@@ -1040,7 +981,6 @@
       var p = new URLSearchParams(location.hash.replace(/^#/, ''));
       if (p.get('q')) state.q = p.get('q');
       if (p.get('region') && regions.indexOf(p.get('region')) >= 0) state.region = p.get('region');
-      if (p.get('city')) state.city = p.get('city');
       state.open = p.get('open') === '1';
       state.sun = p.get('sun') === '1';
     } catch (e) {}
@@ -1050,14 +990,13 @@
       var p = new URLSearchParams();
       if (state.q) p.set('q', state.q);
       if (state.region !== 'all') p.set('region', state.region);
-      if (state.city !== 'all') p.set('city', state.city);
       if (state.open) p.set('open', '1');
       if (state.sun) p.set('sun', '1');
       var s = p.toString();
       history.replaceState(null, '', location.pathname + location.search + (s ? '#' + s : ''));
     } catch (e) {}
   }
-  function isDefault() { return !state.q && state.region === 'all' && state.city === 'all' && !state.open && !state.sun; }
+  function isDefault() { return !state.q && state.region === 'all' && !state.open && !state.sun; }
 
   /* ---------- Иконки ---------- */
   var I = {
@@ -1080,15 +1019,13 @@
       var act = n.d >= g.from && n.d <= g.to ? ' class="is-today"' : '';
       return '<li' + act + '><span>' + label + '</span><span>' + val + '</span></li>';
     }).join('');
-    var banner = cl ? '<div class="mbz-closed' + (cl.reopen ? ' mbz-closed--date' : '') + '">' + I.pause + '<div><b>Временно закрыт</b>' +
-        '<span>' + (cl.reopen ? 'Откроется ' + esc(dateRu(cl.reopen, n)) : 'Дата открытия пока не определена') + '</span>' +
+    var banner = cl ? '<div class="mbz-closed' + (cl.reopen ? ' mbz-closed--date' : '') + '">' + I.pause + '<div><b>' + (cl.reopen ? 'Временно закрыт до ' + esc(dateRu(cl.reopen, n)) : 'Временно закрыт') + '</b>' +
         (cl.note ? '<span class="mbz-closed__n">' + esc(cl.note) + '</span>' : '') + '</div></div>' : '';
     return '<article class="mbz-card' + (cl ? ' mbz-card--closed' : '') + '" data-id="' + o.id + '">' +
       '<h3 class="mbz-card__name">' + esc(o.n) + '</h3>' +
-      '<div class="mbz-line">' + I.pin + '<div>' + esc(o.a) + (o.lm ? '<em>' + esc(o.lm) + '</em>' : '') + '</div></div>' +
+      '<div class="mbz-line">' + I.pin + '<div>' + esc(o.a) + (o.k ? (/[.!?]$/.test(o.a) ? ' ' : '. ') + '<span class="mbz-code">Код УзКад <b>' + esc(o.k) + '</b></span>' : '') + (o.lm ? '<em>' + esc(o.lm) + '</em>' : '') + '</div></div>' +
       (cl ? banner : '') +
       (cl ? '' : '<div class="mbz-line">' + I.clock + '<div><b>' + esc(today) + '</b>' + (st.note ? '<em class="mbz-st mbz-st--' + st.k + '">' + esc(st.note) + '</em>' : '') + '</div></div>') +
-      (o.k ? '<div class="mbz-code">Код УзКад <b>' + esc(o.k) + '</b></div>' : '') +
       (o.ok ? '<div class="mbz-sched"><div class="mbz-sched__t">' + (cl ? 'Обычный режим работы' : 'Расписание на неделю') + '</div><ul>' + sched + '</ul></div>' : '') +
       '<div class="mbz-actions">' +
         '<a class="mbz-btn mbz-btn--main" target="_blank" rel="noopener" href="' + esc(href) + '">' + I.route + 'Локация</a>' +
@@ -1097,7 +1034,6 @@
 
   function match(o, n, tokens) {
     if (state.region !== 'all' && o.r !== state.region) return false;
-    if (state.city !== 'all' && o.c !== state.city) return false;
     if (!closure(o, n)) {   // временно закрытые офисы не отфильтровываются переключателями — пользователь должен их видеть
       if (state.sun && !o.w[6]) return false;
       if (state.open && status(o, n).k !== 'open') return false;
@@ -1106,26 +1042,16 @@
     return true;
   }
 
-  function citiesOf(region) {
-    var out = [];
-    D.forEach(function (o) { if ((region === 'all' || o.r === region) && out.indexOf(o.c) < 0) out.push(o.c); });
-    return out.sort(function (a, b) { return a.localeCompare(b, 'ru'); });
-  }
   function renderSelects() {
-    var cnt = {}; D.forEach(function (o) { cnt[o.r] = (cnt[o.r] || 0) + 1; });
     $('mbz-region').innerHTML = '<option value="all">Все регионы</option>' +
-      regions.map(function (r) { return '<option value="' + esc(r) + '">' + esc(r) + ' (' + cnt[r] + ')</option>'; }).join('');
-    var cities = citiesOf(state.region);
-    if (cities.indexOf(state.city) < 0) state.city = 'all';
-    $('mbz-city').innerHTML = '<option value="all">Все города</option>' +
-      cities.map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + '</option>'; }).join('');
+      regions.map(function (r) { return '<option value="' + esc(r) + '">' + esc(r) + '</option>'; }).join('');
     $('mbz-region').value = state.region;
-    $('mbz-city').value = state.city;
   }
 
   function sync() {
     $('mbz-q').value = state.q;
     $('mbz-clear').classList.toggle('is-on', !!state.q);
+    $('mbz-region').value = state.region;
     $('mbz-open').setAttribute('aria-pressed', state.open);
     $('mbz-sun').setAttribute('aria-pressed', state.sun);
   }
@@ -1155,19 +1081,17 @@
   }
 
   function update() { writeHash(); render(); }
-  function reset() { state = { q: '', region: 'all', city: 'all', open: false, sun: false }; update(); }
+  function reset() { state = { q: '', region: 'all', open: false, sun: false }; update(); }
 
   /* ---------- События ---------- */
   var timer;
   $('mbz-q').addEventListener('input', function (e) { clearTimeout(timer); var v = e.target.value; timer = setTimeout(function () { state.q = v.trim(); update(); }, 150); });
   $('mbz-clear').addEventListener('click', function () { state.q = ''; update(); $('mbz-q').focus(); });
-  $('mbz-region').addEventListener('change', function (e) { state.region = e.target.value; state.city = 'all'; renderSelects(); update(); });
-  $('mbz-city').addEventListener('change', function (e) { state.city = e.target.value; update(); });
+  $('mbz-region').addEventListener('change', function (e) { state.region = e.target.value; update(); });
   $('mbz-open').addEventListener('click', function () { state.open = !state.open; update(); });
   $('mbz-sun').addEventListener('click', function () { state.sun = !state.sun; update(); });
   $('mbz-reset').addEventListener('click', reset);
   $('mbz-reset2').addEventListener('click', reset);
-  $('mbz-print').addEventListener('click', function () { window.print(); });
 
   /* ---------- Старт ---------- */
   readHash(); renderSelects(); render();
