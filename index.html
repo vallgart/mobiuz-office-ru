@@ -209,7 +209,8 @@
     address   адрес
     landmark  ориентир (необязательно, можно "")
     uzkad     код УзКад ("" — строка в карточке не показывается)
-    map       для кнопки «Локация»: пусто "" — поиск в Яндекс Картах по «область + адрес»;
+    map       для кнопки «Локация» (открывается в новой вкладке): ссылка на офис в Яндекс Картах https://…;
+              если пусто "" — откроется поиск в Яндекс Картах по «область + адрес»;
               можно написать свой текст для поиска или вставить готовую ссылку https://…
     schedule  режим работы — список строк { "days", "hours", "lunch" }:
                 days   "пн-вс", "пн-пт", "сб", "вс" или перечисление "пн,ср,пт"
@@ -231,12 +232,12 @@
 [
   {
     "active": true,
-    "name": "Центр обслуживания №1 — Алайский ",
+    "name": "Центр обслуживания №1 — Алайский",
     "region": "Ташкент",
     "address": "Юнусабадский район, проспект Амира Темура, 24",
     "landmark": "",
     "uzkad": "1726266052",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTELbSKL",
     "schedule": [
       { "days": "пн-вс", "hours": "08:00-20:00", "lunch": "" }
     ]
@@ -248,7 +249,7 @@
     "address": "Шайхонтохурский район, ул. Лабзак, 1а",
     "landmark": "",
     "uzkad": "1726277023",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTELb-Im",
     "closed": { "reopen": "15.11.2026", "note": "" },
     "schedule": [
       { "days": "пн-вс", "hours": "08:00-20:00", "lunch": "" }
@@ -261,7 +262,7 @@
     "address": "Шайхантахурский район, Алмазарская МСГ, ул. Батыра Закирова, 7",
     "landmark": "ТРЦ Tashkent City Mall",
     "uzkad": "1726277022",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTELfS1z",
     "closed": { "reopen": "", "note": "" },
     "schedule": [
       { "days": "пн-чт", "hours": "10:00-23:00", "lunch": "" },
@@ -275,7 +276,7 @@
     "address": "Шайхонтохурский район, ул. Коратош, 5А",
     "landmark": "ТРЦ Самарканд Дарвоза",
     "uzkad": "1726277045",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAuAP8S",
     "schedule": [
       { "days": "пн-вс", "hours": "10:00-22:00", "lunch": "" }
     ]
@@ -287,7 +288,7 @@
     "address": "Юнусабадский район, 11 квартал, ул. Ахмад Дониш-2Б",
     "landmark": "ТРЦ Мега Планет, 1 этаж",
     "uzkad": "1726266003",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAuEBI7",
     "schedule": [
       { "days": "пн-вс", "hours": "10:00-19:00", "lunch": "14:00-15:00" }
     ]
@@ -299,7 +300,7 @@
     "address": "Мирзо-Улугбекский район, ул. М. Юсуф, дом 68, кв. 62",
     "landmark": "Автостоянка, ул. Дагестанская",
     "uzkad": "1726269045",
-    "map": "",
+    "map": "https://goo.gl/maps/4RMZCDPcdqD7YFUN6",
     "schedule": [
       { "days": "пн-вс", "hours": "10:00-19:00", "lunch": "14:00-15:00" }
     ]
@@ -311,7 +312,7 @@
     "address": "Чиланзарский район, 16 квартал, дом 15, кв. 65",
     "landmark": "Метро Чиланзар, торговые ряды",
     "uzkad": "1726294043",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAu4O-9",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-21:00", "lunch": "" }
     ]
@@ -323,7 +324,7 @@
     "address": "Алмазарский район, ул. Талабалар, 2",
     "landmark": "Вуз-городок",
     "uzkad": "1726280051",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAue-KP",
     "schedule": [
       { "days": "пн-вс", "hours": "10:00-19:00", "lunch": "14:00-15:00" }
     ]
@@ -335,7 +336,7 @@
     "address": "Бектемирский район, ТКАД, дом 17",
     "landmark": "ТРЦ Compass, рынок Куйлюк",
     "uzkad": "1726273039",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAumTjV",
     "schedule": [
       { "days": "пн-вс", "hours": "10:00-22:00", "lunch": "" }
     ]
@@ -347,7 +348,7 @@
     "address": "Юнусабадский район, пересечение улиц Амира Тимура и Ахмад Даниш, торговый ряд",
     "landmark": "Остановка на рынке Универсам",
     "uzkad": "1726266049",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAu6FL~",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-22:00", "lunch": "" }
     ]
@@ -359,7 +360,7 @@
     "address": "Сергелийский район, МСГ Мехригиё, квартал 6, дом 49а",
     "landmark": "Сергелийский дехканский рынок",
     "uzkad": "1726283003",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAunZOd",
     "schedule": [
       { "days": "пн-вс", "hours": "10:00-19:00", "lunch": "14:00-15:00" }
     ]
@@ -383,7 +384,7 @@
     "address": "г. Андижан, проспект Мустакиллик (бывш. ул. Олтинкул), 5а",
     "landmark": "Территория Старого города, рядом с мед. центром «ZAM-ZAM Med Servis»",
     "uzkad": "1703401009",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAurCmT",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
     ]
@@ -395,7 +396,7 @@
     "address": "Кургантепинский район, г. Кургантепа, Шахрихонсой МСГ, ул. Шифокор, 71",
     "landmark": "",
     "uzkad": "1703220071",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAuv65h",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
     ]
@@ -407,7 +408,7 @@
     "address": "г. Андижан, ул. Бобуршох, 13в",
     "landmark": "Рядом с кафе «Iris»",
     "uzkad": "1703401042",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAuvH-X",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -419,7 +420,7 @@
     "address": "г. Андижан, ул. Ташкент (бывш. ул. Семашко), 3",
     "landmark": "Рядом с кафе «Ruboiy»",
     "uzkad": "1703401077",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAuzZLm",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-19:00", "lunch": "" },
       { "days": "сб", "hours": "09:00-18:00", "lunch": "13:00-14:00" },
@@ -433,7 +434,7 @@
     "address": "г. Асака, ул. Умид",
     "landmark": "Рядом с подземным переходом и аптекой «Gulnora Farm»",
     "uzkad": "1703224019",
-    "map": "",
+    "map": "https://goo.gl/maps/wHhcNKHNZSkY7uYx5",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
     ]
@@ -445,7 +446,7 @@
     "address": "Булокбашинский район, Булокбоши, МСГ М. Исмоилий, ул. Мирза Калом Исмоилий, 17",
     "landmark": "Рядом с аптекой «03», напротив парка культуры и отдыха",
     "uzkad": "1703210004",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAyIRPZ",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
     ]
@@ -457,7 +458,7 @@
     "address": "г. Бухара, ул. Хофиз Тониш Бухорий, 10",
     "landmark": "",
     "uzkad": "1706401024",
-    "map": "",
+    "map": "https://goo.gl/maps/fKvBF7UvEDkEFBab9",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -469,7 +470,7 @@
     "address": "г. Бухара, ул. Ибн Сино, 1",
     "landmark": "Дехканский рынок (стоянка)",
     "uzkad": "1706401016",
-    "map": "",
+    "map": "https://maps.app.goo.gl/t1TdrN495QDSVKam6",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -481,7 +482,7 @@
     "address": "г. Гиждуван, ул. Ю. Хамадоний",
     "landmark": "",
     "uzkad": "1706215068",
-    "map": "",
+    "map": "https://goo.gl/maps/KohzCFgzJ3Yq2pD39",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -493,7 +494,7 @@
     "address": "г. Гулистан, ул. Бирлашган, 68",
     "landmark": "",
     "uzkad": "1724401014",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAyjW4g",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -505,7 +506,7 @@
     "address": "г. Джизак, махалля Сайлижой, проспект Ш. Рашидова",
     "landmark": "",
     "uzkad": "1708401028",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAyrQKX",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -517,7 +518,7 @@
     "address": "г. Джизак, проспект Ш. Рашидова",
     "landmark": "Территория ТЦ «Зебо»",
     "uzkad": "1708401031",
-    "map": "",
+    "map": "https://goo.gl/maps/4qmHp6fNeh479rnFA",
     "schedule": [
       { "days": "пн-сб", "hours": "09:00-19:00", "lunch": "" },
       { "days": "вс", "hours": "09:00-18:00", "lunch": "" }
@@ -530,7 +531,7 @@
     "address": "г. Карши, ул. Ислама Каримова, 221",
     "landmark": "",
     "uzkad": "",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAyzVpD",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -542,7 +543,7 @@
     "address": "г. Карши, ул. Ислама Каримова, 254",
     "landmark": "",
     "uzkad": "",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTAy7Jmq",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -554,7 +555,7 @@
     "address": "Касанский район, Касан, МСГ Сарипул, проспект Мустакиллик, 14",
     "landmark": "Касан дехкон бозори",
     "uzkad": "",
-    "map": "",
+    "map": "https://yandex.ru/maps/org/mobiuz_koson/27673959519",
     "schedule": [
       { "days": "пн-пт", "hours": "09:00-18:00", "lunch": "13:00-14:00" },
       { "days": "сб-вс", "hours": "выходной", "lunch": "" }
@@ -567,7 +568,7 @@
     "address": "г. Китаб, ул. Буюк Ипак Йули, 1",
     "landmark": "",
     "uzkad": "1710232057",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5AV5v",
     "schedule": [
       { "days": "пн-сб", "hours": "08:00-18:00", "lunch": "13:00-14:00" },
       { "days": "вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
@@ -580,7 +581,7 @@
     "address": "г. Шахрисабз, МФЙ «Хабарлик», ул. Ипак Йули",
     "landmark": "В здании супермаркета «Макро»",
     "uzkad": "1710405009",
-    "map": "",
+    "map": "https://goo.gl/maps/gLczU7JsqvtXCV9Y7",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-19:00", "lunch": "13:00-14:00" },
       { "days": "сб-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
@@ -593,7 +594,7 @@
     "address": "г. Навои, ул. Навои, 11",
     "landmark": "",
     "uzkad": "",
-    "map": "",
+    "map": "https://goo.gl/maps/vwgZmpEJcEehcK2A8",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -605,7 +606,7 @@
     "address": "г. Зарафшан, ул. А. Тимура, 45",
     "landmark": "Подразделение Центра обслуживания в г. Навои",
     "uzkad": "1712408014",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5mVLb",
     "schedule": [
       { "days": "пн-пт", "hours": "09:00-18:00", "lunch": "13:00-14:00" },
       { "days": "сб-вс", "hours": "выходной", "lunch": "" }
@@ -618,7 +619,7 @@
     "address": "г. Навои, МСГ Меъмор, 17 квартал, ул. Галаба, 10",
     "landmark": "",
     "uzkad": "1712401022",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5q6Ys",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
     ]
@@ -630,7 +631,7 @@
     "address": "г. Наманган, ул. Нодира, 1",
     "landmark": "",
     "uzkad": "1714401019",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5uE05",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-19:00", "lunch": "" },
       { "days": "сб", "hours": "09:00-18:00", "lunch": "" },
@@ -644,7 +645,7 @@
     "address": "г. Нукус, Турткульское шоссе, 138а",
     "landmark": "",
     "uzkad": "1735401051",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTETr82E",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -656,7 +657,7 @@
     "address": "г. Самарканд, ул. Мирзо-Улугбека, 105",
     "landmark": "",
     "uzkad": "1718401124",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5y-J7",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-20:00", "lunch": "" },
       { "days": "сб-вс", "hours": "09:00-18:00", "lunch": "" }
@@ -669,7 +670,7 @@
     "address": "г. Самарканд, ул. Почта, 5",
     "landmark": "",
     "uzkad": "1718401023",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5FM1G",
     "schedule": [
       { "days": "пн-пт", "hours": "09:00-17:00", "lunch": "13:00-14:00" },
       { "days": "сб", "hours": "09:00-15:00", "lunch": "13:00-14:00" },
@@ -683,7 +684,7 @@
     "address": "г. Термез, ул. Навбахор, 12А",
     "landmark": "",
     "uzkad": "1722401030",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTA5JKLi",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-19:00", "lunch": "" },
       { "days": "сб-вс", "hours": "09:00-18:00", "lunch": "" }
@@ -696,7 +697,7 @@
     "address": "г. Денау, ул. Ш. Рашидова, 238а",
     "landmark": "Подразделение Центра обслуживания в г. Термезе",
     "uzkad": "1722210036",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTEPrGop",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-19:00", "lunch": "" },
       { "days": "сб-вс", "hours": "09:00-18:00", "lunch": "" }
@@ -709,7 +710,7 @@
     "address": "г. Ургенч, ул. Аль-Хорезмий, 101",
     "landmark": "",
     "uzkad": "1733401033",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTEPvYOM",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -721,7 +722,7 @@
     "address": "г. Фергана, ул. Сайилгох, 26",
     "landmark": "",
     "uzkad": "1730401055",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTEPvW9e",
     "schedule": [
       { "days": "пн-пт", "hours": "08:00-18:00", "lunch": "" },
       { "days": "сб", "hours": "09:00-18:00", "lunch": "" },
@@ -735,7 +736,7 @@
     "address": "г. Маргилан, ул. Б. Маргилоний, 184-б",
     "landmark": "",
     "uzkad": "",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTEPzI5y",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "13:00-14:00" }
     ]
@@ -747,7 +748,7 @@
     "address": "г. Коканд, ул. Богистон, 6а",
     "landmark": "Подразделение Центра обслуживания в г. Фергане",
     "uzkad": "1730405057",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTEP7NIC",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -759,7 +760,7 @@
     "address": "г. Чирчик, проспект Алишера Навои, 13",
     "landmark": "",
     "uzkad": "1727419007",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTEP702M",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -783,7 +784,7 @@
     "address": "г. Алмалык, ул. Олимпийская, 3",
     "landmark": "",
     "uzkad": "1727404009",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTETA-L-",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -795,7 +796,7 @@
     "address": "г. Ангрен, ул. Алишера Навоий",
     "landmark": "Напротив супермаркета Korzinka",
     "uzkad": "1727407046",
-    "map": "",
+    "map": "https://maps.google.com/maps?q=41.017257,70.081028&ll=41.017257,70.081028&z=16",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
@@ -807,7 +808,7 @@
     "address": "г. Янгиюль, ул. Ёшлик, 2",
     "landmark": "",
     "uzkad": "1727424018",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTETQKmZ",
     "schedule": [
       { "days": "пн-вс", "hours": "08:00-18:00", "lunch": "" }
     ]
@@ -819,7 +820,7 @@
     "address": "Чиназский район, Кази МФЙ, ул. Самаркандская, 88",
     "landmark": "",
     "uzkad": "1727256039",
-    "map": "",
+    "map": "https://yandex.uz/maps/-/CTETUMKr",
     "schedule": [
       { "days": "пн-вс", "hours": "09:00-18:00", "lunch": "" }
     ]
